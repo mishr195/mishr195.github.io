@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash Mishra | Computer Engineering Portfolio</title>
+    <meta name="description" content="Portfolio of Yash Mishra, a Computer Engineering student at Purdue University.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Placeholder for FontAwesome -->
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <!-- Hero / Workspace Section -->
+        <section class="workspace-scene">
+            <div class="intro-text">
+                <h1>Yash Mishra</h1>
+                <div class="subtitle">Computer Engineering @ Purdue</div>
+                <p class="tagline">Building hardware, software, and everything in between.</p>
+            </div>
+
+            <div class="desk-setup">
+                <!-- Professional Project Board -->
+                <div class="corkboard">
+                    <div class="note my-projects-note" id="myProjectsBtn">
+                        <span class="note-text">My Projects</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="note resume-note">
+                        <span class="note-text">Resume</span>
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+
+                    <div class="note" id="statsBtn">
+                        <span class="note-text">Impact Stats</span>
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+
+                    <div class="note contact-note">
+                        <span class="note-text">Contact</span>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+
+                <div class="laptop-illustration">
+                    <!-- CSS Art or Image for Laptop -->
+                    <div class="screen">
+                        <div class="code-snippet">
+                            <span class="keyword">class</span> <span class="class-name">Engineer</span> {<br>
+                            &nbsp;&nbsp;<span class="keyword">constructor</span>() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="this">this</span>.passion = <span
+                                class="string">"Innovation"</span>;<br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
+                    </div>
+                    <div class="keyboard"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <h2 class="section-title">Experience Timeline</h2>
+            <div class="timeline-container">
+                <!-- Timeline items injected by JS -->
+            </div>
+        </section>
+
+        <!-- Projects Modal -->
+        <div id="projectsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-header">
+                    <h2>Stuff I've Built</h2>
+                    <p>A collection of my hardware and software projects.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project Items will be injected here by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Selection Modal -->
+    <div id="resumeModal" class="modal">
+        <div class="modal-content resume-modal-content">
+            <span class="close-modal close-resume">&times;</span>
+            <div class="modal-header">
+                <h2>Select Resume</h2>
+            </div>
+            <div class="resume-options">
+                <a href="https://drive.google.com/file/d/1UPaGgcQ_04OX75-W8Grn9CRSRAnoB1Yh/view?usp=sharing"
+                    target="_blank" class="resume-option software">
+                    <i class="fas fa-code"></i>
+                    <span>Software</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1ZoYZbnQ35vjyflFPN7ZK2YnwfHQ95Y3o/view?usp=sharing"
+                    target="_blank" class="resume-option hardware">
+                    <i class="fas fa-microchip"></i>
+                    <span>Hardware</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Modal -->
+    <div id="statsModal" class="modal">
+        <div class="modal-content stats-modal-content">
+            <div class="modal-header">
+                <h2>Impact at a Glance</h2>
+                <span class="close-stats close-modal">&times;</span>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">Students Taught</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="stat-number">~35%</div>
+                    <div class="stat-label">Efficiency Gains</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-bug"></i>
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Bugs Squashed</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-code"></i>
+                    <div class="stat-number">10k+</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
