@@ -13,20 +13,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Project Data
     const projects = [
         {
-            title: "Intelligent Bike Safety System",
-            description: "Integrated safety platform with car detection, crash detection, and rider communication using ESP32/NRF52 and LiDAR.",
-            tags: ["Embedded Systems", "LiDAR", "ESP32", "C++"],
+            title: "PCIe Gen3 Endpoint Verification Environment",
+            description: "<strong>UVM Verification Environment Source Structure</strong><br>Project repository illustrating the modular UVM verification environment for a PCIe Gen3 endpoint. The implementation includes reusable agents, drivers, sequencers, monitors, scoreboards, predictors, assertions, functional coverage, and constrained-random test sequences, alongside the RTL design under verification.<br><br><ul><li>Developed a reusable UVM verification environment for a simplified PCIe endpoint, implementing drivers, monitors, sequencers, scoreboards, and predictors.</li><li>Created 60+ constrained-random testcases and 12 functional covergroups, achieving 96% functional coverage across configuration, memory, and completion transactions.</li><li>Implemented 42 SystemVerilog Assertions (SVA) to verify protocol timing, packet ordering, flow control, and LTSSM transitions.</li><li>Automated regression execution and coverage reporting using Python, reducing verification turnaround by 30% while validating 10,000+ transactions per regression.</li></ul>",
+            tags: ["SystemVerilog", "UVM", "SVA", "Python", "ModelSim", "RTL Verification"],
+            icon: "fa-microchip",
+            image: "assets/pcie_uvm_env.png",
+            links: []
+        },
+        {
+            title: "FPGA-Implemented Cache-Coherent Multicore RISC-V System",
+            description: "<strong>RTL Source Code Repository</strong><br>GitHub repository containing the SystemVerilog implementation of the pipelined RISCV processor, including datapath, control unit, hazard detection, forwarding logic, caches, memory controller, and multicore support modules.<br><br><ul><li>Designed and implemented a fully pipelined FPGA-based 5-stage RISC-V processor featuring hazard detection, forwarding, stall/flush control, a 2-bit saturating branch predictor, and Branch Target Buffer (BTB).</li><li>Extended the processor with instruction/data caches and an MSI cache-coherent multicore architecture, achieving up to 1.50× speedup for dual-threaded workloads and up to 3.78× improvement over the baseline single-cycle design on memory-intensive benchmarks.</li><li>Verified the design using 180+ directed and stress test cases, including single- and dual-threaded merge sort, achieving 100% ISA compliance through cycle-accurate simulation, differential memory trace comparison, and waveform analysis.</li><li>Synthesized and deployed the processor on FPGA using Vivado, resolving timing violations and validating functionality on hardware through on-board execution and signal inspection.</li><li>Developed a parameterized RTL verification framework for cache and interconnect behavior, validating cache fills, evictions, writebacks, invalidations, snoop transactions, and coherence state transitions across multiple cores.</li></ul>",
+            tags: ["Computer Architecture", "SystemVerilog", "RISC-V", "FPGA", "Vivado"],
+            icon: "fa-memory",
+            image: "assets/riscv_rtl.png",
+            links: []
+        },
+        {
+            title: "Intelligent Bike Safety System (Senior Design)",
+            description: "<strong>Spark Challenge Second Place Award & Final Presentation</strong><br>Second Place in Purdue ECE's Senior Design Spark Challenge, judged and sponsored by Caterpillar, recognizing outstanding achievement in the design, implementation, and demonstration of the embedded bike safety platform.<br><br><ul><li>Architected embedded safety platform combining IMU-based crash detection, GPS localization, and BLE mobile alerting.</li><li>Designed custom BLE GATT service enabling deterministic 500ms telemetry streaming in multi-threaded RTOS environment.</li><li>Optimized SRAM usage through circular LiDAR buffers and scan-age tracking for stable object detection.</li><li>Led full hardware–software co-design cycle: PCB design, firmware architecture, and mobile application development.</li><li>Winner, Spark Challenge (Senior Design) – Recognized by Caterpillar for system-level reliability.</li></ul>",
+            tags: ["Embedded Systems", "ESP32 Microcontrollers", "LiDAR", "RTOS", "BLE"],
             icon: "fa-bicycle",
+            image: "assets/bike_safety.png",
             links: [
                 { text: "App Design", url: "https://drive.google.com/file/d/1oz-FELO0thZps7BGzQjAqKDcgwUJn6Z4/view?usp=sharing", type: "primary" },
                 { text: "View Code", url: "https://github.com/arya1106/intelligent-biking-system/tree/twillio-broken-laptop", type: "secondary" }
             ]
         },
         {
-            title: "USB Data Communication System",
-            description: "Implemented USB TX and Data Buffer modules for USB 1.1 packet transmission using NRZI encoding and FIFO buffering.",
-            tags: ["SystemVerilog", "FPGA", "Quartus"],
+            title: "USB 1.1 Data Communication Controller",
+            description: "<strong>ModelSim Verification of USB 1.1 Transmitter RTL</strong><br>ModelSim simulation validating the USB 1.1 transmitter finite state machine, NRZI encoding, packet transmission, CRC generation, and timing behavior.<br><br><ul><li>Designed compliant USB 1.1 transmit and buffering subsystem including NRZI encoding and FIFO staging.</li><li>Built modular verification testbench validating reset recovery and packet timing edge cases.</li><li>Achieved 100% protocol-conformance coverage across 50+ stress scenarios.</li></ul>",
+            tags: ["Hardware Verification", "SystemVerilog", "ModelSim", "ASIC Design", "USB"],
             icon: "fa-usb",
+            image: "assets/usb_modelsim.png",
             links: [
                 { text: "View Diagram", url: "https://drive.google.com/file/d/1eb5uXpNUHcoF6VkRyFqBSnrwlIvQbAlO/view?usp=sharing", type: "primary" }
             ]
@@ -48,22 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             links: [
                 { text: "Watch Video", url: "https://drive.google.com/file/d/1pmPkGVYDaDEXkmWJkXsV-NJUuC_oTuMp/view?usp=sharing", type: "primary" }
             ]
-        },
-        {
-            title: "AI-Powered Inventory Planner",
-            description: "OCR + Generative AI pipeline to classify receipt items and update inventory automatically.",
-            tags: ["Python", "AI", "OCR", "Gemini API"],
-            icon: "fa-robot",
-            links: []
-        },
-        {
-            title: "Image Processing Pipeline",
-            description: "Python-based pipeline for grayscale conversion, Gaussian filtering, and image blending.",
-            tags: ["Python", "NumPy", "Matplotlib"],
-            icon: "fa-image",
-            links: [
-                { text: "View Code", url: "https://github.com/mishr195/Personal-Projects-/tree/main/Image%20Blender", type: "secondary" }
-            ]
         }
     ];
 
@@ -72,41 +74,44 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             role: "Teaching Assistant",
             company: "Purdue University",
-            location: "West Lafayette, Indiana",
-            period: "August 2025 – Present",
+            location: "West Lafayette, IN",
+            period: "Aug 2025 – Present",
             details: [
-                "Guiding 120+ students in Python, MATLAB, Excel, and circuit analysis, and helping them increase their lab completion and course performance.",
-                "Organized review sessions and developed supplemental materials bridging theory and hardware applications."
+                "Mentored 120+ students in digital logic design, Verilog-based RTL implementation, FSM design, and sequential circuit analysis, reinforcing theoretical concepts through lab problem-solving.",
+                "Led office hours for ECE 20875, explaining core machine learning concepts including Z-score normalization, stochastic gradient descent (SGD), loss functions, and statistical foundations, while guiding Python-based algorithm implementations."
             ]
         },
         {
-            role: "UVM Verification",
+            role: "UVM Verification Engineer",
             company: "SoCET",
-            location: "West Lafayette, Indiana",
-            period: "August 2024 – April 2025",
+            location: "West Lafayette, IN",
+            period: "Aug 2024 – Apr 2025",
             details: [
-                "Designed and implemented UVM testbenches for AHB-MUX, covering drivers, monitors, sequences, predictors, and scoreboard, reducing functional bugs by 30–40% pre-synthesis.",
-                "Developed TLM interfaces and coverage-driven verification strategies, improving verification efficiency and reducing regression runtime by 25%."
+                "Architected modular UVM verification environments for AHB-MUX IP, implementing drivers, monitors, sequencers, and predictors.",
+                "Designed coverage-driven verification strategy reducing pre-silicon escape defects by ~35%.",
+                "Developed TLM-based interfaces and constrained-random stimulus generation, cutting regression runtime by 25%.",
+                "Automated waveform debugging workflows and coverage reporting pipelines to accelerate root-cause analysis."
             ]
         },
         {
-            role: "Research and Development Lead",
-            company: "Dynoco, Purdue Grand Prix",
-            location: "West Lafayette, Indiana",
-            period: "January 2023 – Present",
+            role: "Software Lead",
+            company: "Dynoco – Purdue Grand Prix",
+            location: "West Lafayette, IN",
+            period: "Jan 2023 – Present",
             details: [
-                "Integrated advanced go-kart sensors for real-time telemetry, improving lap times by 15–20% and vehicle stability.",
-                "Engineered a custom wheel and axle system, enhancing load distribution and cornering precision, resulting in 10% increase in cornering efficiency."
+                "Integrated embedded telemetry (IMU, RPM, temp, load sensors) on microcontrollers for a go-kart, improving real-time monitoring accuracy by 20%.",
+                "Developed firmware for sensor fusion combining IMU, RPM, temperature, and load data, applied complementary and Kalman filtering, and implemented logging routines, increasing data reliability by 25%.",
+                "Optimized microcontroller resources and real-time scheduling, reducing latency and maintaining system stability by 30%."
             ]
         },
         {
             role: "Software Engineering Intern - Data Science Team",
             company: "SPARC Pvt. Ltd",
             location: "India",
-            period: "Sep. 2022 – October 2022",
+            period: "Sep. 2022 – Oct 2022",
             details: [
-                "Conducted comprehensive research for the ”Stellar Radius and its Space Applications” project, employing Python and SQL to create and manage geospatial databases.",
-                "Generated thematic geo-spatial layers at a 1:10K scale, producing detailed resource inventories (e.g., water sources, road networks) from high-resolution satellite images, enhancing data accuracy by 60%.",
+                "Conducted comprehensive research for the 'Stellar Radius and its Space Applications' project, employing Python and SQL to create and manage geospatial databases.",
+                "Generated thematic geo-spatial layers at a 1:10K scale, producing detailed resource inventories from high-resolution satellite images, enhancing data accuracy by 60%.",
                 "Enhanced data management and analysis for the SIS-DP project, leveraging Python and SQL to improve data processing speed by 40%."
             ]
         },
@@ -169,11 +174,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
             }
 
+            let imageHtml = '';
+            if (project.image) {
+                imageHtml = `<div class="project-image-container" style="margin-top: 10px; margin-bottom: 10px; text-align: center;">
+                                <img src="${project.image}" alt="${project.title}" style="max-width: 100%; border-radius: 8px;">
+                             </div>`;
+            }
+
             card.innerHTML = `
                 <div class="project-header">
                     <div class="project-icon"><i class="fas ${iconClass}"></i></div>
                     <div class="project-title">${project.title}</div>
                 </div>
+                ${imageHtml}
                 <div class="project-desc">${project.description}</div>
                 ${linksHtml}
                 <div class="project-tags">
