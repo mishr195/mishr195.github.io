@@ -13,8 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yash Mishra | Hardware & Systems Engineer",
-  description: "Portfolio of Yash Mishra, an engineer specializing in ASIC verification, RTL design, and embedded systems.",
+  title: "Yash Mishra — Hardware Verification & Computer Architecture",
+  description:
+    "Yash Mishra is a computer engineer at Purdue working across UVM verification, processor RTL, formal methods, storage systems, and embedded hardware.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -23,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-gray-100 min-h-screen flex flex-col font-sans`}>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
     </html>
