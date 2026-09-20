@@ -7,11 +7,18 @@ const roles = [
       "Developing read-locality-aware placement policies for ZNS SSDs in an LLM-assisted storage framework, with NVMeVirt evaluation and planned Cosmos+ OpenSSD validation.",
   },
   {
-    period: "Aug 2025 — Present",
+    period: "Aug 2025 — May 2026",
     role: "Teaching Assistant",
     company: "Purdue University · ECE 270 & ECE 20875",
     description:
-      "Mentoring 120+ students across digital logic, Verilog RTL, finite-state machines, Python, and core machine-learning foundations.",
+      "Mentored students across digital logic, Verilog RTL, finite-state machines, Python, and core machine-learning foundations.",
+  },
+  {
+    period: "Jan 2023 — Present",
+    role: "Embedded Systems Lead",
+    company: "Dynoco · Purdue Grand Prix",
+    description:
+      "Designed and integrated STM32 vehicle telemetry spanning IMU, RPM, temperature, and load sensing, real-time sensor fusion, and low-level CAN and SPI communication.",
   },
   {
     period: "Aug 2024 — Apr 2025",
@@ -28,7 +35,7 @@ export function Experience() {
       <div className="site-container two-column-section">
         <div className="section-heading sticky-heading">
           <p className="section-index">02 / Experience</p>
-          <h2>Research, verification, teaching.</h2>
+          <h2>Research, verification, embedded systems.</h2>
         </div>
 
         <div className="role-list">

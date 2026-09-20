@@ -75,11 +75,11 @@ export const timelineData: TimelineEvent[] = [
   {
     id: "teaching-assistant",
     type: "experience",
-    date: "Aug 2025 – Present",
+    date: "Aug 2025 – May 2026",
     title: "Teaching Assistant (ECE 270 & ECE 20875)",
     organization: "Purdue University",
     technologies: ["Verilog", "RTL Design", "Python", "Machine Learning"],
-    summary: "Mentoring 120+ students in digital logic design and Python-based machine learning.",
+    summary: "Mentored students in digital logic design and Python-based machine learning.",
     details: {
       problem: "Helping students grasp foundational hardware and data science concepts.",
       results: "Guided implementations of FSMs in Verilog and ML algorithms like SGD in Python."

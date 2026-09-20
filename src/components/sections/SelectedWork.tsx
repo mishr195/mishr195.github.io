@@ -1,8 +1,14 @@
 import Image, { type StaticImageData } from "next/image";
-import { ArrowUpRight, Check, Code2, FileImage, PlayCircle } from "lucide-react";
+import { ArrowUpRight, Code2, FileText, PlayCircle } from "lucide-react";
 import pcieImage from "../../../legacy/assets/pcie_uvm_env.png";
 import riscvImage from "../../../legacy/assets/riscv_rtl.png";
 import usbImage from "../../../legacy/assets/usb_modelsim.png";
+
+type EvidenceLink = {
+  label: string;
+  href: string;
+  kind: "Source" | "Walkthrough" | "Demo" | "Diagram";
+};
 
 type Project = {
   index: string;
@@ -15,6 +21,13 @@ type Project = {
   metrics: Array<{ value: string; label: string }>;
   technologies: string[];
   proof: string;
+  repository?: {
+    href: string;
+    name: string;
+    description?: string;
+    folders?: string[];
+  };
+  links?: EvidenceLink[];
 };
 
 const projects: Project[] = [
@@ -35,6 +48,10 @@ const projects: Project[] = [
     ],
     technologies: ["SystemVerilog", "UVM", "SVA", "Python", "ModelSim"],
     proof: "RTL and UVM source structure",
+    repository: {
+      href: "https://github.com/mishr195/pcie3-genpoint",
+      name: "mishr195/pcie3-genpoint",
+    },
   },
   {
     index: "02",
@@ -67,27 +84,196 @@ const projects: Project[] = [
       { value: "Z3", label: "solver backend" },
     ],
     technologies: ["Python", "Z3", "SMT", "ONNX"],
-    proof: "Repository or short walkthrough requested",
+    proof: "SMT fairness verification source",
+    repository: {
+      href: "https://github.com/mishr195/smt-ml-fairness",
+      name: "mishr195/smt-ml-fairness",
+      description:
+        "ONNX and JSON models compiled into Z3 constraints for individual-fairness proofs and counterexamples.",
+      folders: ["src", "tests", "models", "docs"],
+    },
+  },
+  {
+    index: "04",
+    name: "Intelligent Bike Safety System",
+    category: "Embedded systems · Team lead",
+    period: "Aug 2025 — Jan 2026",
+    summary:
+      "An embedded safety platform integrating LiDAR, IMU, GPS, and BLE for collision detection, crash notification, and rider assistance, delivered through a complete hardware–software co-design cycle.",
+    metrics: [
+      { value: "500 ms", label: "BLE telemetry interval" },
+      { value: "ESP32", label: "embedded platform" },
+      { value: "Winner", label: "Spark Challenge" },
+    ],
+    technologies: ["ESP32", "Zephyr RTOS", "BLE GATT", "LiDAR", "Flutter"],
+    proof: "Firmware and mobile prototype",
+    links: [
+      {
+        label: "Browse embedded source",
+        href: "https://github.com/arya1106/intelligent-biking-system/tree/twillio-broken-laptop",
+        kind: "Source",
+      },
+      {
+        label: "View app walkthrough",
+        href: "https://drive.google.com/file/d/1oz-FELO0thZps7BGzQjAqKDcgwUJn6Z4/view?usp=sharing",
+        kind: "Walkthrough",
+      },
+    ],
+  },
+  {
+    index: "05",
+    name: "USB 1.1 Data Communication Controller",
+    category: "ASIC / RTL design",
+    period: "Mar 2025 — May 2025",
+    summary:
+      "A compliant transmit and buffering subsystem with NRZI encoding, FIFO staging, and a modular verification testbench covering reset recovery and packet-timing edge cases.",
+    image: usbImage,
+    imageAlt: "ModelSim waveform verifying the USB 1.1 transmitter RTL",
+    metrics: [
+      { value: "100%", label: "protocol coverage" },
+      { value: "50+", label: "stress scenarios" },
+      { value: "USB 1.1", label: "protocol target" },
+    ],
+    technologies: ["SystemVerilog", "Quartus", "ModelSim", "NRZI", "ASIC design"],
+    proof: "ModelSim transmitter waveform",
+    links: [
+      {
+        label: "View block diagram",
+        href: "https://drive.google.com/file/d/1eb5uXpNUHcoF6VkRyFqBSnrwlIvQbAlO/view?usp=sharing",
+        kind: "Diagram",
+      },
+    ],
+  },
+  {
+    index: "06",
+    name: "Dynoco Go-Kart Telemetry",
+    category: "Embedded systems lead",
+    period: "Jan 2023 — Present",
+    summary:
+      "STM32-based vehicle telemetry integrating IMU, RPM, temperature, and load sensors, with real-time sensor fusion and low-level CAN and SPI communication between subsystems.",
+    metrics: [
+      { value: "25%", label: "higher data reliability" },
+      { value: "30%", label: "lower system latency" },
+      { value: "STM32", label: "control platform" },
+    ],
+    technologies: ["STM32", "Embedded C", "CAN", "SPI", "Kalman filtering"],
+    proof: "Vehicle telemetry demonstration",
+    links: [
+      {
+        label: "Watch telemetry demo",
+        href: "https://drive.google.com/file/d/1f3RC99kUlp4dB3SW_twjNMzRJcC-dyYj/view?usp=sharing",
+        kind: "Demo",
+      },
+    ],
   },
 ];
 
-const evidenceLinks = [
-  {
-    label: "Bike safety system — source",
-    href: "https://github.com/arya1106/intelligent-biking-system/tree/twillio-broken-laptop",
-    icon: Code2,
-  },
-  {
-    label: "Bike safety system — app walkthrough",
-    href: "https://drive.google.com/file/d/1oz-FELO0thZps7BGzQjAqKDcgwUJn6Z4/view?usp=sharing",
-    icon: PlayCircle,
-  },
-  {
-    label: "Go-kart telemetry — demo",
-    href: "https://drive.google.com/file/d/1f3RC99kUlp4dB3SW_twjNMzRJcC-dyYj/view?usp=sharing",
-    icon: PlayCircle,
-  },
-];
+function LinkIcon({ kind }: { kind: EvidenceLink["kind"] }) {
+  if (kind === "Source") return <Code2 size={18} />;
+  if (kind === "Diagram") return <FileText size={18} />;
+  return <PlayCircle size={18} />;
+}
+
+function ProjectProof({ project }: { project: Project }) {
+  if (project.image) {
+    const directLink = project.repository?.href ?? (project.links?.length === 1 ? project.links[0].href : undefined);
+    const actionLabel = project.repository
+      ? "Open repository"
+      : project.links?.length === 1
+        ? project.links[0].label
+        : undefined;
+
+    const figure = (
+      <figure className="proof-figure">
+        <Image
+          src={project.image}
+          alt={project.imageAlt ?? ""}
+          sizes="(max-width: 900px) 100vw, 38vw"
+          placeholder="blur"
+        />
+        <figcaption>
+          <span>{project.proof}</span>
+          {actionLabel && (
+            <span className="proof-caption-action">
+              {actionLabel} <ArrowUpRight size={14} />
+            </span>
+          )}
+        </figcaption>
+      </figure>
+    );
+
+    return directLink ? (
+      <a
+        className="proof-link"
+        href={directLink}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={actionLabel}
+      >
+        {figure}
+      </a>
+    ) : (
+      figure
+    );
+  }
+
+  if (project.repository) {
+    return (
+      <a
+        className="repository-card"
+        href={project.repository.href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Open ${project.repository.name} on GitHub`}
+      >
+        <div className="repository-card-topline">
+          <span>
+            <Code2 size={18} /> Public repository
+          </span>
+          <ArrowUpRight size={18} />
+        </div>
+        <div>
+          <p className="repository-name">{project.repository.name}</p>
+          <p className="repository-description">{project.repository.description}</p>
+        </div>
+        {project.repository.folders && (
+          <ul className="repository-folders" aria-label="Repository folders">
+            {project.repository.folders.map((folder) => (
+              <li key={folder}>{folder}/</li>
+            ))}
+          </ul>
+        )}
+      </a>
+    );
+  }
+
+  if (project.links) {
+    return (
+      <div className="resource-card">
+        <div className="resource-card-heading">
+          <span>{project.proof}</span>
+          <Code2 size={18} />
+        </div>
+        <ul className="resource-links">
+          {project.links.map((link) => (
+            <li key={link.href}>
+              <a href={link.href} target="_blank" rel="noreferrer">
+                <span>
+                  <LinkIcon kind={link.kind} />
+                  <small>{link.kind}</small>
+                  {link.label}
+                </span>
+                <ArrowUpRight size={16} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  return null;
+}
 
 export function SelectedWork() {
   return (
@@ -130,72 +316,10 @@ export function SelectedWork() {
               </div>
 
               <div className="project-proof">
-                {project.image ? (
-                  <figure className="proof-figure">
-                    <Image
-                      src={project.image}
-                      alt={project.imageAlt ?? ""}
-                      sizes="(max-width: 900px) 100vw, 38vw"
-                      placeholder="blur"
-                    />
-                    <figcaption>
-                      <Check size={14} /> Verified artifact · {project.proof}
-                    </figcaption>
-                  </figure>
-                ) : (
-                  <div className="proof-placeholder" id="proof-request">
-                    <div>
-                      <FileImage size={22} />
-                      <span>Proof slot {project.index}</span>
-                    </div>
-                    <p>{project.proof}</p>
-                    <small>GitHub · YouTube · image · report</small>
-                  </div>
-                )}
+                <ProjectProof project={project} />
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="evidence-grid">
-          <figure className="evidence-image">
-            <Image
-              src={usbImage}
-              alt="ModelSim waveform verifying the USB 1.1 transmitter RTL"
-              sizes="(max-width: 900px) 100vw, 50vw"
-              placeholder="blur"
-            />
-            <figcaption>
-              USB 1.1 transmitter · ModelSim waveform
-              <a
-                href="https://drive.google.com/file/d/1eb5uXpNUHcoF6VkRyFqBSnrwlIvQbAlO/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
-              >
-                View block diagram <ArrowUpRight size={14} />
-              </a>
-            </figcaption>
-          </figure>
-
-          <div className="evidence-ledger">
-            <p className="ledger-kicker">Additional evidence</p>
-            <h3>More builds, with links.</h3>
-            <ul>
-              {evidenceLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <li key={link.label}>
-                    <a href={link.href} target="_blank" rel="noreferrer">
-                      <span>
-                        <Icon size={17} /> {link.label}
-                      </span>
-                      <ArrowUpRight size={16} />
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
         </div>
       </div>
     </section>

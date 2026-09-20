@@ -1,11 +1,5 @@
 import { ArrowDownRight, ArrowUpRight, FileText } from "lucide-react";
 
-const highlights = [
-  { value: "96%", label: "functional coverage" },
-  { value: "180+", label: "processor tests" },
-  { value: "120+", label: "students mentored" },
-];
-
 export function Hero() {
   return (
     <section id="home" className="hero-shell">
@@ -55,14 +49,6 @@ export function Hero() {
 
       <div className="site-container hero-footer">
         <p className="hero-note">West Lafayette, Indiana · M.S. candidate</p>
-        <div className="hero-stats" aria-label="Selected impact">
-          {highlights.map((item) => (
-            <div className="hero-stat" key={item.label}>
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
