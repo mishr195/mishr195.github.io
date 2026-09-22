@@ -705,6 +705,55 @@ button:focus-visible {
   line-height: 1.65;
 }
 
+.role-evidence {
+  width: min(100%, 31rem);
+  margin-top: 1.5rem;
+  padding: 0.9rem 1rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem;
+  border: 1px solid rgba(16, 17, 15, 0.32);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.role-evidence:hover,
+.role-evidence:focus-visible {
+  border-color: var(--ink);
+  background: rgba(16, 17, 15, 0.06);
+}
+
+.role-evidence-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--signal);
+}
+
+.role-evidence strong,
+.role-evidence small {
+  display: block;
+}
+
+.role-evidence strong {
+  font-size: 0.86rem;
+  font-weight: 680;
+  line-height: 1.35;
+}
+
+.role-evidence small {
+  margin-top: 0.3rem;
+  color: #61625e;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .profile-section {
   border-bottom: 1px solid var(--line);
 }

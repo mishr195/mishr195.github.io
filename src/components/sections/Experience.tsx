@@ -1,4 +1,18 @@
-const roles = [
+import { ArrowUpRight, PlayCircle } from "lucide-react";
+
+type Role = {
+  period: string;
+  role: string;
+  company: string;
+  description: string;
+  evidence?: {
+    label: string;
+    meta: string;
+    href: string;
+  };
+};
+
+const roles: Role[] = [
   {
     period: "Aug 2026 — Present",
     role: "Graduate Researcher",
@@ -25,7 +39,12 @@ const roles = [
     role: "UVM Verification Engineer",
     company: "SoCET",
     description:
-      "Architected modular UVM environments for an AMBA AHB-MUX IP, cutting regression runtime by 25% through TLM-based interfaces and automated coverage reporting.",
+      "Architected a modular UVM environment for an AMBA AHB-MUX IP with drivers, monitors, sequencers, and predictors. Built a 30+ case verification plan spanning reset, arbitration, cache behavior, and system integration; TLM-based interfaces and automated reporting reduced regression runtime by 25%.",
+    evidence: {
+      label: "Watch my AHB-MUX UVM walkthrough",
+      meta: "6:58 · YouTube",
+      href: "https://www.youtube.com/watch?v=kSf6jHfj3pY",
+    },
   },
 ];
 
@@ -46,6 +65,23 @@ export function Experience() {
                 <h3>{role.role}</h3>
                 <p className="role-company">{role.company}</p>
                 <p className="role-description">{role.description}</p>
+                {role.evidence && (
+                  <a
+                    className="role-evidence"
+                    href={role.evidence.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="role-evidence-icon" aria-hidden="true">
+                      <PlayCircle size={18} />
+                    </span>
+                    <span>
+                      <strong>{role.evidence.label}</strong>
+                      <small>{role.evidence.meta}</small>
+                    </span>
+                    <ArrowUpRight size={17} aria-hidden="true" />
+                  </a>
+                )}
               </div>
             </article>
           ))}
